@@ -16,4 +16,31 @@ ul ul ul {
   margin-top: 10px;
 }
 
-/* Add style here */
+
+ul li:nth-child(1) {
+  color: royalblue;
+}
+ul li:nth-child(2) {
+  color: forestgreen;
+}
+ul li:nth-child(3) {
+  color: crimson;
+}
+ul li:nth-child(4) {
+  color: darkorange;
+}
+ul ul li:nth-child(3) {
+  background: lightgray;
+  color: violet;
+}
+ul ul li:nth-child(1) {
+  background: lightgray;
+  color: violet;
+}
+ul ul ul li:nth-child(1) {
+  background: beige;
+  color: darkorange;
+}
+ul li:nth-child(5) {
+  color: royalblue;
+}
