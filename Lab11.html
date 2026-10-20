@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 11</title>
+</head>
+<body>
+
+    <h1>Greeting Calculator</h1>
+    <p>What is your name? <input type="text" id="name"></p>
+    <button id="bttn">Submit</button>
+    <p id="greeting"></p>
+
+    <h1>Basic Calculator</h1>
+    First number <input type="number" id="num1"><br>
+    Second number <input type="number" id="num2"><br>
+
+    <input type="radio" name="calc" value="add">Addition
+    <input type="radio" name="calc" value="sub">Subtraction
+    <input type="radio" name="calc" value="mult">Multiplication
+    <input type="radio" name="calc" value="div">Division
+
+    <br>
+    <button id="calcBtn">Calculate</button>
+    <p id="calcResult"></p>
+    <button id="clear-btn">Clear Screen</button>
+
+    <script>
+        document.getElementById("bttn").addEventListener("click", function() {
+            let name = document.getElementById("name").value;
+
+            document.getElementById("greeting").textContent = `${name}`;
+        });
+
+        document.getElementById("calcBtn").addEventListener("click", function() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let selected = document.querySelector('input[name="calc"]:checked');
+            let result;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                result = "Enter numbers and select an operation";
+            }
+            else if (selected.value === "add") result = num1 + num2;
+            else if (selected.value === "sub") result = num1 - num2;
+            else if (selected.value === "mult") result = num1 * num2;
+            else if (selected.value === "div") result = num1 / num2;
+
+            document.getElementById("calcResult").textContent = "Result: " + result;
+        });
+
+        document.getElementById("clear-btn").addEventListener("click", function() {
+            document.getElementById("calcResult").textContent = "";
+            document.getElementById("greeting").textContent = "";
+            document.getElementById("name").value = "";
+            document.getElementById("num1").value = "";
+            document.getElementById("num2").value = "";
+        });
+    </script>
+
+</body>
+</html>
