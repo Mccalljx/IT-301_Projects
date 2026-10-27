@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random User</title>
+</head>
+<body>
+<script>
+        let img = document.createElement('img');
+        let h1 = document.createElement('h1');
+         let p = document.createElement('p');
+         let p2 = document.createElement('p');
+
+        let bttn = document.createElement('button');
+        bttn.type = 'button';
+        bttn.textContent = 'Generate Profile';
+
+        let form = document.createElement('form');
+        form.action = '#';
+
+        form.appendChild(bttn);
+        document.body.appendChild(form);
+            const getImg = async ()=>{
+            try{
+
+                let result = await fetch('https://randomuser.me/api/');
+                result = await result.json();
+                let user = result.results[0];
+
+
+
+                img.src = user.picture.large;
+                img.alt = 'picture';
+                img.style.width = '300px';
+                document.body.appendChild(img);
+
+
+                let fullName = user.name.first + ' '+ user.name.last;
+                h1.textContent = fullName;
+                document.body.appendChild(h1);
+
+                let email = user.email;
+                p.textContent = email;
+                document.body.appendChild(p);
+
+                let phone = user.phone;
+                p2.textContent = phone;
+                document.body.appendChild(p2);
+
+            } catch (reason) {
+        console.log(reason);
+    }
+};
+
+            bttn.addEventListener('click', getImg);</script>
+</body>
+</html>
